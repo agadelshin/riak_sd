@@ -1,0 +1,8 @@
+*.beam
+.eunit
+.rebar
+deps/*
+ebin/*
+rel/riak_sd
+dev
+apps/riak_sd/src/*

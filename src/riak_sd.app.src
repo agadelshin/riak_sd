@@ -1,0 +1,14 @@
+%% -*- erlang -*-
+{application, riak_sd,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  riak_core
+                 ]},
+  {mod, { riak_sd_app, []}},
+  {env, []}
+ ]}.
