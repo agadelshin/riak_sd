@@ -1,6 +1,11 @@
 riak_sd: A Riak Core Application
 ======================================
 
+Description
+-----------
+
+Example of Key/Value distributed storage based on riak_core and dets tables
+
 Application Structure
 ---------------------
 
