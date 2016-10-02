@@ -24,32 +24,32 @@ ping() ->
 
 
 store(Key, Value) ->
-	KeyHash = to_hash(Key),
-	{ok, ReqId} = riak_sd_coord:coord({store, {KeyHash, Value}}, {?APPLICATION, KeyHash}, self(), {?N, ?R, ?W}),
-	receive 
-		{ok, ReqId} -> ok
+    KeyHash = to_hash(Key),
+    {ok, ReqId} = riak_sd_coord:coord({store, {KeyHash, Value}}, {?APPLICATION, KeyHash}, self(), {?N, ?R, ?W}),
+    receive 
+        {ok, ReqId} -> ok
     after 5000 -> 
-    	{error, timeout}
+        {error, timeout}
     end.
 
 fetch(Key) ->
-	KeyHash = to_hash(Key),
-	{ok, ReqId} = riak_sd_coord:coord({fetch, KeyHash}, {?APPLICATION, KeyHash}, self(), {?N, ?R, ?W}),
-	receive 
-		{ok, ReqId, Value} -> Value
+    KeyHash = to_hash(Key),
+    {ok, ReqId} = riak_sd_coord:coord({fetch, KeyHash}, {?APPLICATION, KeyHash}, self(), {?N, ?R, ?W}),
+    receive 
+        {ok, ReqId, Value} -> Value
     after 5000 -> 
-    	{error, timeout}
-    end.	
+        {error, timeout}
+    end.    
 
 remove(Key) ->
-	KeyHash = to_hash(Key),
-	{ok, ReqId} = riak_sd_coord:coord({remove, KeyHash}, {?APPLICATION, KeyHash}, self(), {?N, ?R, ?W}),
-	receive 
-		{ok, ReqId} -> ok
+    KeyHash = to_hash(Key),
+    {ok, ReqId} = riak_sd_coord:coord({remove, KeyHash}, {?APPLICATION, KeyHash}, self(), {?N, ?R, ?W}),
+    receive 
+        {ok, ReqId} -> ok
     after 5000 -> 
-    	{error, timeout}
+        {error, timeout}
     end.
 
 
 to_hash(Key) ->
-	crypto:hash(md5, Key).
+    crypto:hash(md5, Key).
